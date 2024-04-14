@@ -1,9 +1,9 @@
 package edu.badpals.bowlinggame.frames;
 
 public class LastFrame implements Frame{
-    Character firstPin = ' ';
-    Character secondPin = ' ';
-    Character thirdPin = ' ';
+    private Character firstPin = ' ';
+    private Character secondPin = ' ';
+    private Character thirdPin = ' ';
     private int frameScore = 0;
     public LastFrame(Character firstPin, Character secondPin){
         this.firstPin = firstPin;
