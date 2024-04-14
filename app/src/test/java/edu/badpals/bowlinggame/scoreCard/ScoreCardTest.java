@@ -21,4 +21,10 @@ public class ScoreCardTest {
         assertEquals((Integer)90,totalScore);
     }
 
+    public void test_getFrames(){
+        ScoreCard scoreCard = new ScoreCard("9-9-9-9-9-9-9-9-9-9-");
+        String[] frames = {"9-","9-","9-","9-","9-","9-","9-","9-","9-","9-"};
+        assertEquals(frames,scoreCard.getFrames());
+    }
+
 }
