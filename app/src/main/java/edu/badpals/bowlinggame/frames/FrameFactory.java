@@ -7,7 +7,7 @@ public class FrameFactory {
     }
     public static Frame getFrame(Character firstPin,Character secondPin){
         if (secondPin == '/'){
-            return new SpareFrame(firstPin);
+            return new SpareFrame(firstPin,secondPin);
         }else{
             return new RegularFrame(firstPin,secondPin);
         }

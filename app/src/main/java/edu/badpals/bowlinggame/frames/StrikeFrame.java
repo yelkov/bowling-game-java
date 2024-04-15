@@ -11,7 +11,8 @@ public class StrikeFrame implements Frame{
 
     @Override
     public String toString() {
-        return this.pin.toString();
+        return this.pin.toString()+
+                "|";
     }
     @Override
     public int getFirstPinScore(){

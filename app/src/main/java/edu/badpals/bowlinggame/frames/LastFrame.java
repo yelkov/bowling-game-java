@@ -50,11 +50,13 @@ public class LastFrame implements Frame{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(firstPin)
-                .append("|")
-                .append(secondPin);
+                .append(" ")
+                .append(secondPin)
+                .append("|");
         if (thirdPin != ' '){
-            sb.append("|")
-                    .append(thirdPin);
+            sb.append(" ")
+                    .append(thirdPin)
+                    .append("|");
         }
         return sb.toString();
     }

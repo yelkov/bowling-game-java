@@ -34,7 +34,8 @@ public class RegularFrame implements Frame{
     @Override
     public String toString() {
         return firstPin.toString() +
-                "|" +
-                secondPin.toString();
+                " " +
+                secondPin.toString()+
+                "|";
     }
 }

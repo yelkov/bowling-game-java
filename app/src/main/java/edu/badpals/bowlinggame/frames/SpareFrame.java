@@ -4,7 +4,7 @@ public class SpareFrame implements Frame{
     private Character firstPin = ' ';
     private Character secondPin = '/';
     private int frameScore = 10;
-    public SpareFrame(Character firstPin){
+    public SpareFrame(Character firstPin,Character secondPin){
         this.firstPin = firstPin;
     }
     @Override
@@ -27,7 +27,8 @@ public class SpareFrame implements Frame{
     @Override
     public String toString() {
         return firstPin.toString() +
-                "|" +
-                 secondPin.toString();
+                " " +
+                 secondPin.toString()+
+                "|";
     }
 }
