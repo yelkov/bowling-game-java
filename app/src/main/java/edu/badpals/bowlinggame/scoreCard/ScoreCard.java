@@ -11,11 +11,13 @@ import java.util.stream.IntStream;
 
 public class ScoreCard {
     private String pins = "";
+    private int totalScore = 0;
     private List<Frame> frames = new ArrayList<>();
 
     public ScoreCard(String pins) {
         this.pins = pins;
         splitPinsIntoFrames();
+        calculateTotalScore();
     }
 
 
@@ -25,13 +27,17 @@ public class ScoreCard {
 
 
     public Integer getTotalScore() {
-        int totalScore = getPins()
-                .chars()
-                .map(a -> a == '-' ? '0' : a)
-                .map(a -> Character.getNumericValue(a))
-                .reduce(0, (total, nextPin) -> total + nextPin);
         return totalScore;
-
+    }
+    private void calculateTotalScore(){
+        int totalScore = 0;
+        for (Frame frame : getFrames()){
+            totalScore += frame.getFrameScore();
+        }
+        setTotalScore(totalScore);
+    }
+    private void setTotalScore(int score){
+        this.totalScore = score;
     }
     private void splitPinsIntoFrames() {
         char[] splitPins = getPins().toCharArray();
