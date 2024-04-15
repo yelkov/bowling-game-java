@@ -4,25 +4,30 @@ public class LastFrame implements Frame{
     private Character firstPin = ' ';
     private Character secondPin = ' ';
     private Character thirdPin = ' ';
+    private int firstPinScore = 0;
+    private int secondPinScore = 0;
+    private int thirdPinScore = 0;
     private int frameScore = 0;
     public LastFrame(Character firstPin, Character secondPin){
         this.firstPin = firstPin;
         this.secondPin = secondPin;
+        calculateFrame();
     }
     public LastFrame(Character firstPin,Character secondPin,Character thirdPin){
         this.firstPin = firstPin;
         this.secondPin = secondPin;
         this.thirdPin = thirdPin;
+        calculateFrame();
     }
 
     private void calculateFrame(){
-        int firstScore = pinToScore(firstPin);;
-        int secondScore = pinToScore(secondPin);
-        int thirdScore = pinToScore(thirdPin);
-        if (secondPin == '/'){secondScore = 10 - firstScore;}
-        if (thirdPin == '/'){thirdScore = 10 - secondScore;}
+        firstPinScore = pinToScore(firstPin);;
+        secondPinScore = pinToScore(secondPin);
+        thirdPinScore = pinToScore(thirdPin);
+        if (secondPin == '/'){secondPinScore = 10 - firstPinScore;}
+        if (thirdPin == '/'){thirdPinScore = 10 - secondPinScore;}
 
-        frameScore = firstScore + secondScore + thirdScore;
+        frameScore = firstPinScore + secondPinScore + thirdPinScore;
     }
 
     private int pinToScore(Character pin) {
@@ -39,7 +44,6 @@ public class LastFrame implements Frame{
 
     @Override
     public int getFrameScore() {
-        calculateFrame();
         return this.frameScore;
     }
     @Override
@@ -54,8 +58,14 @@ public class LastFrame implements Frame{
         }
         return sb.toString();
     }
+    @Override
     public int getFirstPinScore(){
-        calculateFrame();
-        return Character.getNumericValue(firstPin);
+        return firstPinScore;
+    }
+    public int getSecondPinScore(){
+        return secondPinScore;
+    }
+    public int getThirdPinScore() {
+        return thirdPinScore;
     }
 }

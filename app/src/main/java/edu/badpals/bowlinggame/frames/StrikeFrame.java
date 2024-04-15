@@ -17,4 +17,8 @@ public class StrikeFrame implements Frame{
     public int getFirstPinScore(){
         return frameScore;
     }
+    @Override
+    public int getSecondPinScore() {
+        return 0;
+    }
 }

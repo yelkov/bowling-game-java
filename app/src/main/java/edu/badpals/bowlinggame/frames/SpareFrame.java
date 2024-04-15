@@ -7,8 +7,13 @@ public class SpareFrame implements Frame{
     public SpareFrame(Character firstPin){
         this.firstPin = firstPin;
     }
+    @Override
     public int getFirstPinScore(){
         return Character.getNumericValue(firstPin);
+    }
+    @Override
+    public int getSecondPinScore() {
+        return 10;
     }
 
     @Override
