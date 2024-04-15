@@ -16,53 +16,27 @@ public class LastFrame implements Frame{
     }
 
     private void calculateFrame(){
-        int firstScore;
-        int secondScore;
-        int thirdScore;
+        int firstScore = pinToScore(firstPin);;
+        int secondScore = pinToScore(secondPin);
+        int thirdScore = pinToScore(thirdPin);
+        if (secondPin == '/'){secondScore = 10 - firstScore;}
+        if (thirdPin == '/'){thirdScore = 10 - secondScore;}
 
-        switch (firstPin){
-            case '-':
-                firstScore = 0;
-                break;
-            case 'x':
-                firstScore = 10;
-                break;
-            default:
-                firstScore = Character.getNumericValue(firstPin);
-                break;
-        }
-        switch (secondPin){
-            case '-':
-                secondScore = 0;
-                break;
-            case '/':
-                secondScore = 10;
-                firstScore = 0;
-                break;
-            case 'x':
-                secondScore = 10;
-                break;
-            default:
-                secondScore = Character.getNumericValue(secondPin);
-                break;
-        }
-        switch (thirdPin){
-            case ' ', '-':
-                thirdScore = 0;
-                break;
-            case '/':
-                secondScore = 0;
-                thirdScore = 10;
-                break;
-            case 'x':
-                thirdScore = 10;
-                break;
-            default:
-                thirdScore = Character.getNumericValue(thirdPin);
-                break;
-        }
         frameScore = firstScore + secondScore + thirdScore;
     }
+
+    private int pinToScore(Character pin) {
+        int firstScore;
+        switch (pin){
+            case '-',' ':
+                return  0;
+            case 'x','/':
+                return  10;
+            default:
+                return Character.getNumericValue(pin);
+        }
+    }
+
     @Override
     public int getFrameScore() {
         calculateFrame();
