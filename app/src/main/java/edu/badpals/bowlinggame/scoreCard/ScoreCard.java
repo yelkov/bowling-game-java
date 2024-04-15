@@ -15,7 +15,7 @@ public class ScoreCard {
 
     public ScoreCard(String pins) {
         this.pins = pins;
-
+        splitPinsIntoFrames();
     }
 
 
@@ -23,8 +23,6 @@ public class ScoreCard {
         return this.pins;
     }
 
-    private void setFrames() {
-    }
 
     public Integer getTotalScore() {
         int totalScore = getPins()
@@ -75,7 +73,6 @@ public class ScoreCard {
     }
 
     public List<Frame> getFrames() {
-        splitPinsIntoFrames();
         return this.frames;
     }
 }
