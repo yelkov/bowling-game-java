@@ -1,8 +1,11 @@
 package edu.badpals.bowlinggame.frames;
 
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class FrameFactoryTest {
+    @Test
     public void test_factory(){
         Frame regular = FrameFactory.getFrame('1','-');
         assertTrue(regular instanceof RegularFrame);

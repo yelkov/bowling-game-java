@@ -41,6 +41,7 @@ public class LastFrame implements Frame{
                 break;
             case 'x':
                 secondScore = 10;
+                break;
             default:
                 secondScore = Character.getNumericValue(secondPin);
                 break;
@@ -52,6 +53,7 @@ public class LastFrame implements Frame{
             case '/':
                 secondScore = 0;
                 thirdScore = 10;
+                break;
             case 'x':
                 thirdScore = 10;
                 break;
@@ -63,6 +65,7 @@ public class LastFrame implements Frame{
     }
     @Override
     public int getFrameScore() {
+        calculateFrame();
         return this.frameScore;
     }
     @Override
@@ -76,5 +79,9 @@ public class LastFrame implements Frame{
                     .append(thirdPin);
         }
         return sb.toString();
+    }
+    public int getFirstPinScore(){
+        calculateFrame();
+        return Character.getNumericValue(firstPin);
     }
 }

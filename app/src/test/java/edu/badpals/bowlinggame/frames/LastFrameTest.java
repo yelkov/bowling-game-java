@@ -1,8 +1,11 @@
 package edu.badpals.bowlinggame.frames;
 
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class LastFrameTest {
+    @Test
     public void test_LastFrame(){
         Frame reg = new LastFrame('-','1');
         Frame spare = new LastFrame('-','/','1');
@@ -11,13 +14,13 @@ public class LastFrameTest {
         Frame twoStrike = new LastFrame('x','x','1');
         Frame strikeSpare = new LastFrame('x','-','/');
         Frame threeStrike = new LastFrame('x','x','x');
-        assertEquals(1,reg);
-        assertEquals(11,spare);
-        assertEquals(11,otroSpare);
-        assertEquals(11,oneStrike);
-        assertEquals(21,twoStrike);
-        assertEquals(20,strikeSpare);
-        assertEquals(30,threeStrike);
+        assertEquals(1,reg.getFrameScore());
+        assertEquals(11,spare.getFrameScore());
+        assertEquals(11,otroSpare.getFrameScore());
+        assertEquals(11,oneStrike.getFrameScore());
+        assertEquals(21,twoStrike.getFrameScore());
+        assertEquals(20,strikeSpare.getFrameScore());
+        assertEquals(30,threeStrike.getFrameScore());
     }
 
 }

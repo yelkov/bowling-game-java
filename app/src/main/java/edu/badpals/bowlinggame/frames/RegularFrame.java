@@ -9,22 +9,27 @@ public class RegularFrame implements Frame{
         this.secondPin = secondPin;
     }
     private void calculateFrame() {
-        if (firstPin == '-'){
+        if (firstPin == '-' && secondPin != '-'){
             frameScore = Character.getNumericValue(secondPin);
         }
-        else if(secondPin == '-'){
+        else if(firstPin!='-' && secondPin == '-'){
             frameScore = Character.getNumericValue(firstPin);
+        }
+        else if(firstPin == '-' && secondPin == '-'){
+            frameScore = 0;
         }
         else{
             frameScore = Character.getNumericValue(firstPin) + Character.getNumericValue(secondPin);
         }
     }
-    public int getFirstPin(){
+    @Override
+    public int getFirstPinScore(){
         return Character.getNumericValue(firstPin);
     }
 
     @Override
     public int getFrameScore() {
+        calculateFrame();
         return this.frameScore;
     }
     @Override
