@@ -6,12 +6,15 @@ public class RegularFrame implements Frame{
     private int firstPinScore = 0;
     private int secondPinScore = 0;
     private int frameScore = 0;
+    private Frame nextFrame;
+    private Frame secondNextFrame;
+
     public RegularFrame(Character firstPin,Character secondPin){
         this.firstPin = firstPin;
         this.secondPin = secondPin;
-        calculateFrame();
+        calculateFrameScore();
     }
-    private void calculateFrame() {
+    private void calculateFrameScore() {
         firstPinScore = pinToScore(firstPin);
         secondPinScore = pinToScore(secondPin);
         frameScore = firstPinScore + secondPinScore;
@@ -27,6 +30,18 @@ public class RegularFrame implements Frame{
     public int getSecondPinScore() {
         return secondPinScore;
     }
+
+    @Override
+    public void setNextFrame(Frame nextFrame) {
+        this.nextFrame=nextFrame;
+    }
+
+    @Override
+    public void setSecondNextFrame(Frame secondNextFrame) {
+        this.secondNextFrame=secondNextFrame;
+
+    }
+
     @Override
     public int getFrameScore() {
         return this.frameScore;

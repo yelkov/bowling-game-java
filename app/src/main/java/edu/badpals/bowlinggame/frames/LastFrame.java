@@ -11,16 +11,16 @@ public class LastFrame implements Frame{
     public LastFrame(Character firstPin, Character secondPin){
         this.firstPin = firstPin;
         this.secondPin = secondPin;
-        calculateFrame();
+        calculateFrameScore();
     }
     public LastFrame(Character firstPin,Character secondPin,Character thirdPin){
         this.firstPin = firstPin;
         this.secondPin = secondPin;
         this.thirdPin = thirdPin;
-        calculateFrame();
+        calculateFrameScore();
     }
 
-    private void calculateFrame(){
+    private void calculateFrameScore(){
         firstPinScore = pinToScore(firstPin);;
         secondPinScore = pinToScore(secondPin);
         thirdPinScore = pinToScore(thirdPin);
@@ -70,4 +70,8 @@ public class LastFrame implements Frame{
     public int getThirdPinScore() {
         return thirdPinScore;
     }
+    @Override
+    public void setNextFrame(Frame nextFrame) {}
+    @Override
+    public void setSecondNextFrame(Frame secondNextFrame) {}
 }

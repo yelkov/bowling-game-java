@@ -3,12 +3,24 @@
  */
 package edu.badpals.bowlinggame;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import edu.badpals.bowlinggame.scoreCard.ScoreCard;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        ScoreCard scoreCard = new ScoreCard("12345123451234512345");
+        ScoreCard newScoreCard = new ScoreCard("9-9-9-9-9-9-9-9-9-9-");
+        ScoreCard perfect = new ScoreCard("xxxxxxxxxxxx");
+        ScoreCard camino = new ScoreCard("x1/7-134362184/21x9/");
+
+
+        scoreCard.printScoreByFrame();
+        System.out.println(scoreCard.getTotalScore().toString());
+        newScoreCard.printScoreByFrame();
+        System.out.println(newScoreCard.getTotalScore().toString());
+        perfect.printScoreByFrame();
+        System.out.println(perfect.getTotalScore().toString());
+        camino.printScoreByFrame();
+        System.out.println(camino.getTotalScore().toString());
+
     }
 }

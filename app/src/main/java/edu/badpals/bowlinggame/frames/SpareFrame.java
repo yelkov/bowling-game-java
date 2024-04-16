@@ -3,25 +3,43 @@ package edu.badpals.bowlinggame.frames;
 public class SpareFrame implements Frame{
     private Character firstPin = ' ';
     private Character secondPin = '/';
+    private int firstPinScore = 0;
+    private int secondPinScore = 0;
     private int frameScore = 10;
+    private Frame nextFrame;
+    private Frame secondNextFrame;
     public SpareFrame(Character firstPin,Character secondPin){
         this.firstPin = firstPin;
     }
     @Override
     public int getFirstPinScore(){
-        return Character.getNumericValue(firstPin);
+        this.firstPinScore = Character.getNumericValue(firstPin);
+        return  firstPinScore;
     }
     @Override
     public int getSecondPinScore() {
-        return 10;
+        return (10 - firstPinScore);
     }
 
     @Override
-    public int getFrameScore() {
-        return this.frameScore;
+    public void setNextFrame(Frame nextFrame) {
+        this.nextFrame = nextFrame;
     }
-    public int getFirstPin(){
-        return Character.getNumericValue(firstPin);
+
+    @Override
+    public void setSecondNextFrame(Frame secondNextFrame) {
+        this.secondNextFrame = secondNextFrame;
+    }
+
+    public void calculateFrameScore() {
+        frameScore = frameScore + nextFrame.getFirstPinScore();
+    }
+    @Override
+    public int getFrameScore() {
+        if (frameScore == 10){
+            calculateFrameScore();
+        }
+        return this.frameScore;
     }
 
     @Override

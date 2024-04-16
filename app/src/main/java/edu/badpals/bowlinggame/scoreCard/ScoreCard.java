@@ -19,7 +19,9 @@ public class ScoreCard {
         splitPinsIntoFrames();
         calculateTotalScore();
     }
-
+    public List<Frame> getFrames() {
+        return this.frames;
+    }
 
     public String getPins() {
         return this.pins;
@@ -29,13 +31,40 @@ public class ScoreCard {
     public Integer getTotalScore() {
         return totalScore;
     }
+
+    public void printScoreByFrame(){
+        int scoreByFrame = 0;
+        StringBuilder sb = new StringBuilder();
+        for (Frame frame : getFrames()){
+            sb.append(frame.toString())
+                    .append("\t");
+        }
+        sb.append("\n");
+        for (Frame frame: getFrames()){
+            scoreByFrame += frame.getFrameScore();
+            sb.append(Integer.toString(scoreByFrame))
+                    .append("\t");
+        }
+        System.out.println(sb.toString());
+    }
     private void calculateTotalScore(){
         int totalScore = 0;
-        for (Frame frame : getFrames()){
-            totalScore += frame.getFrameScore();
-        }
+        for (int i = 0; i < getFrames().size();i++){
+            if (i < 8){
+                frames.get(i).setNextFrame(frames.get(i+1));
+                frames.get(i).setSecondNextFrame(frames.get(i+2));
+                totalScore += frames.get(i).getFrameScore();
+            }if(i==8){
+                frames.get(i).setNextFrame(frames.get(i+1));
+                totalScore += frames.get(i).getFrameScore();
+            }if(i == 9){
+                totalScore += frames.get(i).getFrameScore();
+            }
+
+            }
         setTotalScore(totalScore);
-    }
+        }
+
     private void setTotalScore(int score){
         this.totalScore = score;
     }
@@ -78,8 +107,5 @@ public class ScoreCard {
         return roll;
     }
 
-    public List<Frame> getFrames() {
-        return this.frames;
-    }
 }
 
